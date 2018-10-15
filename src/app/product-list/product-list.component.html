@@ -1,0 +1,56 @@
+<div class="card">
+  <div class='card-header'>
+    {{productList}}
+  </div>
+  <div class='card-body'>
+    <div style='text-align: left'>
+    <div class='row'>
+      <div class='col-md-2'>
+        {{filterText}}:
+      </div>
+      <div class='col-md-4'>
+        <input type="text" [(ngModel)]='filterString'/>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-md-2'>
+        {{filteredByText}}:<span class="p-l-5"> {{filterString}}</span>
+      </div>
+    </div>
+  </div>
+    <div class='table table-responsive' *ngIf='products.length'>
+      <table class='table'>
+        <thead>
+          <tr>
+            <th>
+              <button class='btn btn-primary' (click) = 'toggleProductImage()'>
+                {{isProductImageShown? hideImageBtnText: showImageBtnText}}
+              </button>
+            </th>            
+            <th>{{productNameTableHeaderText}}</th>
+            <th>{{productCodeTableHeaderText}}</th>
+            <th>{{productAvailableTableHeaderText}}</th>
+            <th>{{productPriceTableHeaderText}}</th>
+            <th>{{productRatingsTableHeaderText}}</th>
+            <th>Comments</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let product of filteredProducts'>
+            <td><img *ngIf='isProductImageShown' class='img-fluid' 
+              [src]="'https://openclipart.org/download/'+ product.productImageURL" [title]='product.productName'
+              [style.width.px]='50' [style.height.px]='50'/> </td>
+            <td>{{product.productName}} </td>
+            <td>{{product.productCode | convertToSpace:'-'}}</td>
+            <td><div class="fa fa-lg" [ngClass]="{'fa-smile-o text-success': product.productAvailable == 0,
+              'fa-frown-o text-danger': product.productAvailable == 1}"></div>
+            </td>
+            <td >{{product.productPrice | currency:'INR' : 'symbol': '1.2-2'}}</td>
+            <td><pm-star [rating]='product.productRating' (ratingClicked)="onRatingClicked($event)"></pm-star></td>
+            <td><app-comments-to-products></app-comments-to-products></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+.row
+{
+    min-height: 1px;
+}
+
+thead
+{
+    color: royalblue;
+}
+
+th, td{
+    text-align: center
+}
