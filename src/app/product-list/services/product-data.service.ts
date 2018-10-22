@@ -1,26 +1,30 @@
 import { Injectable } from '@angular/core';
 import { IProduct } from '../product';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http'
+import { HttpClient, HttpErrorResponse } from '@angular/common/http'
 import { Observable, throwError } from 'rxjs';
-import {catchError, tap} from 'rxjs/operators'
+import { catchError, tap } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductDataService {
 
-  getProductsData() : Observable<IProduct[]>
-  {
-    return this.httpClientService.get<IProduct[]>("http://localhost:3000/products").pipe(tap(error => console.log("Error occured: " + JSON.stringify(error))),catchError(this.handleError));    
+  constructor(private httpClientService: HttpClient) {
+    this.productDataURL = environment.production ? "http://Server" : "http://localhost:3000/products";
   }
 
-  private handleError(error : HttpErrorResponse)
-  {
+  getProductsData(): Observable<IProduct[]> {
+    return this.httpClientService.get<IProduct[]>(this.productDataURL).pipe(
+      tap(error => console.log("Error occured: " + JSON.stringify(error))),
+      catchError(this.handleError));
+  }
+
+  private handleError(error: HttpErrorResponse) {
     console.error(error);
     return throwError(error);
 
   }
 
-  constructor(private httpClientService: HttpClient) {     
-  }
+  private productDataURL: string;
 }
