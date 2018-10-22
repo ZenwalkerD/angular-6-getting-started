@@ -1,0 +1,42 @@
+{
+  "products":[
+    {
+      "productName": "Pipe",
+      "productCode": "1-",
+      "productAvailable": true,
+      "productPrice": 122,
+      "productRating": 4,
+      "productDescription": "Hand crafted richly designed wooden pipe",
+      "productImageURL":"170767/1340130900.svg"
+    },
+    {
+      "productName": "Japanese Knife",
+      "productCode": "2",
+      "productAvailable": true,
+      "productPrice": 13,
+      "productRating": 3,
+      "productDescription": "Samurai crafted hand made sharp knife",
+      "productImageURL": "169098/1332613362.svg"
+    },
+    {
+      "productName": "Scissors",
+      "productCode": "3",
+      "productAvailable": false,
+      "productPrice": 100,
+      "productRating": 4,
+      "productDescription":
+        "Stainless steel sharp scissor made by highly skilled craftsmen",
+      "productImageURL": "449/ryanlerch-scissors-open-V2.svg"
+    },
+    {
+      "productName": "Cutting Board",
+      "productCode": "5",
+      "productAvailable": false,
+      "productPrice": 200,
+      "productRating": 4.5,
+      "productDescription":
+        "Oak tree based beautifully crafted cutting board for your beautiful kitchen",
+      "productImageURL": "293104/cutting-board.svg"
+    }
+  ]
+}
