@@ -15,7 +15,7 @@ const route: Routes = [
   { path: 'welcome', component: WelcomeComponent },
   { path: 'products', component: ProductListComponent },
   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
-  { path: '*', component: PageNotFoundComponent }
+  { path: '**', component: PageNotFoundComponent }
 ]
 
 @NgModule({

@@ -22,7 +22,7 @@
       <table class='table'>
         <thead>
           <tr>
-            <th>
+            <th class="col-md-2">
               <button class='btn btn-primary' (click) = 'toggleProductImage()'>
                 {{isProductImageShown? hideImageBtnText: showImageBtnText}}
               </button>
@@ -39,7 +39,7 @@
           <tr *ngFor='let product of filteredProducts'>
             <td><img *ngIf='isProductImageShown' class='img-fluid' 
               [src]="'https://openclipart.org/download/'+ product.productImageURL" [title]='product.productName'
-              [style.width.px]='50' [style.height.px]='50'/> </td>
+              [style.width.px]='50' [style.height.px]='30'/> </td>
             <td>{{product.productName}} </td>
             <td>{{product.productCode | convertToSpace:'-'}}</td>
             <td><div class="fa fa-lg" [ngClass]="{'fa-smile-o text-success': product.productAvailable == 0,
