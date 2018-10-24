@@ -10,10 +10,13 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
+import { DetailsProductsComponent } from './details-products/details-products.component';
+import { TruncateHypenPipe } from './shared/pipes/truncate-hypen.pipe';
 
 const route: Routes = [
   { path: 'welcome', component: WelcomeComponent },
   { path: 'products', component: ProductListComponent },
+  { path: 'products/:id', component: DetailsProductsComponent },
   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ]
@@ -24,7 +27,11 @@ const route: Routes = [
     WelcomeComponent,
     ProductListComponent,
     ConvertToSpacesPipe,
-    StarComponent, CommentsToProductsComponent, PageNotFoundComponent
+    StarComponent, CommentsToProductsComponent, 
+    PageNotFoundComponent, 
+    DetailsProductsComponent, 
+    DetailsProductsComponent, 
+    TruncateHypenPipe
   ],
   imports: [
     BrowserModule,

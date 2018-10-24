@@ -22,8 +22,8 @@
       <table class='table'>
         <thead>
           <tr>
-            <th class="col-md-2">
-              <button class='btn btn-primary' (click) = 'toggleProductImage()'>
+            <th class="col-xs-5">
+              <button class='btn btn-primary btn-sm' (click) = 'toggleProductImage()'>
                 {{isProductImageShown? hideImageBtnText: showImageBtnText}}
               </button>
             </th>            
@@ -45,9 +45,10 @@
             <td><div class="fa fa-lg" [ngClass]="{'fa-smile-o text-success': product.productAvailable == 0,
               'fa-frown-o text-danger': product.productAvailable == 1}"></div>
             </td>
-            <td >{{product.productPrice | currency:'INR' : 'symbol': '1.2-2'}}</td>
+            <td class="text-right" >{{product.productPrice | currency:'INR' : 'symbol': '1.2-2'}}</td>
             <td><pm-star [rating]='product.productRating' (ratingClicked)="onRatingClicked($event)"></pm-star></td>
-            <td><app-comments-to-products></app-comments-to-products></td>
+            <td><app-comments-to-products></app-comments-to-products>|<a class="btn "
+              [routerLink]="['/products', product.productCode]">Details</a></td>
           </tr>
         </tbody>
       </table>
