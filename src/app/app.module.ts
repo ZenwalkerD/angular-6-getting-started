@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ConvertToSpacesPipe } from './shared/pipes/convertToSpace-pipe';
 import { StarComponent } from './shared/star/star.component';
-import { CommentsToProductsComponent } from './shared/comments-to-products/comments-to-products.component';
 import { HttpClientModule } from '@angular/common/http';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -27,7 +26,7 @@ const route: Routes = [
     WelcomeComponent,
     ProductListComponent,
     ConvertToSpacesPipe,
-    StarComponent, CommentsToProductsComponent, 
+    StarComponent, 
     PageNotFoundComponent, 
     DetailsProductsComponent, 
     DetailsProductsComponent, 
