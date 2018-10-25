@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { IProduct } from '../product-list/product';
+import { IProduct } from '../interfaces/product';
 import {ActivatedRoute} from '@angular/router';
-import { ProductDataService } from '../product-list/services/product-data.service';
+import { ProductDataService } from '../services/product-data.service';
 
 @Component({
-  templateUrl: './details-products.component.html',
-  styleUrls: ['./details-products.component.css']
+  templateUrl: './products-description.component.html',
+  styleUrls: ['./products-description.component.css']
 })
 export class DetailsProductsComponent implements OnInit {
 
