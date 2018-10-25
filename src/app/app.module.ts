@@ -11,6 +11,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { DetailsProductsComponent } from './products/products-description/products-description.component';
 import { TruncateHypenPipe } from './shared/pipes/truncate-hypen.pipe';
+import { ProductCommentsComponent } from './products/product-comments/product-comments.component';
 
 const route: Routes = [
   { path: 'welcome', component: WelcomeComponent },
@@ -30,7 +31,7 @@ const route: Routes = [
     PageNotFoundComponent, 
     DetailsProductsComponent, 
     DetailsProductsComponent, 
-    TruncateHypenPipe
+    TruncateHypenPipe, ProductCommentsComponent
   ],
   imports: [
     BrowserModule,

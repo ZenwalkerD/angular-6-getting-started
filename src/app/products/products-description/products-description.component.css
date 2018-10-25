@@ -1,0 +1,15 @@
+.rounded-edges
+{
+    border-radius: 20px;
+    background: gray;
+}
+
+.border_1
+{
+    border-color: red;
+    border-style: solid;
+    border-width: 5px;
+    overflow: hidden;
+    display: inline-block;
+
+}
