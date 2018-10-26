@@ -1,6 +1,18 @@
-<div>
-  adaasdasas
-</div>
-<div>
-  dasdas
-</div>
+<ul class="list-group">
+  <div class="border border-dark" style="background-color: lightgrey; border-radius: 20px" *ngFor="let val of info">
+    <div class="row ml-2 mr-2 mt-1 mb-2">
+      <div class="col col-11">
+        {{val}}
+      </div>
+      <a class="pr-1 btn btn-link text-info fa fa-lg fa-smile-o" style="max-width: 20px; max-height: 40px"></a>
+      <span class="pl-2 pr-2"></span>   
+      <a class="fa fa-lg fa-frown-o pl-3 btn btn-link text-danger" style="max-width: 20px; max-height: 40px"></a>
+    </div>
+  </div>
+  <form class="ml-2">
+    <div class="form-row mt-3 mb-2">      
+      <textarea class="col-7 form-control" style="border-radius: 20px"></textarea>      
+      <button class="col-1 btn btn-primary btn-sm">Submit</button>
+    </div>
+  </form>
+</ul>

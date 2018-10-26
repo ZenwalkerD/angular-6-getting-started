@@ -9,9 +9,20 @@ export class ProductCommentsComponent implements OnInit {
 
   constructor() { }
 
-  @Input() productId : string;
+  @Input()
+  set selectedProductId(value : string){
+    this._selectedProductId = value;
+  }
+  
+  private _selectedProductId : string;
   ngOnInit() {
     
   }
 
+  info : string[] = [
+    "asdaddaaaaafwsfgegeghwrw,jbaefeiofhaeoiffsodfs;nbsdglksbsdbegfwkgbgpogbbgwbgowbwbowbhowfowhb;oiehgg;gisbgobggoiugoedghoirwgiorhgoiwrhgoiwhgfoiwgoiwgoiwrgiogoigobgogliusbgsbg;oshgswo;gwserg",
+    "wetrwrwrw",
+    "gerger",
+    "qeqwe"
+  ];
 }

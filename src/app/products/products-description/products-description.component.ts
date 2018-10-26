@@ -21,8 +21,7 @@ export class DetailsProductsComponent implements OnInit {
     this.productId = this.activatedRoute.snapshot.paramMap.get('id');
      this.productService.getProductsData().subscribe(item => {
       this.products= item,
-      this.selectedProduct = this.products.find(x => this.productId === x.productCode)
-      console.log(this.selectedProduct.productCode);
+      this.selectedProduct = this.products.find(x => this.productId === x.productCode)      
     },  
       error => this.errorMessage = <any> error);      
   }
