@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "json-server": "json-server --watch src/test-data/product-list.json"
+    "json-server": "json-server --watch src/test-data/products-mock/product-list.json --id productCode"
   },
   "private": true,
   "dependencies": {

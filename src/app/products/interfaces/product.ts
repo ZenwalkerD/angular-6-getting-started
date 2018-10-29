@@ -6,5 +6,13 @@ export interface IProduct {
   productRating: number;
   productImageURL: string;
   productDescription: string;
-  productComments: string[];
+  productComments: IProductComments[];
+}
+
+export interface IProductComments
+{
+  id:number;
+  comment : string;
+  likes: number;
+  dislikes: number;
 }

@@ -21,7 +21,7 @@ export class DetailsProductsComponent implements OnInit {
   ngOnInit() {
     this.productId = this.activatedRoute.snapshot.paramMap.get('id');
      this.productService.getProductsData().subscribe(item => {
-      this.products= item,
+    this.products= item,
       this.selectedProduct = this.products.find(x => this.productId === x.productCode)      
     },  
       error => this.errorMessage = <any> error);      
@@ -33,7 +33,7 @@ export class DetailsProductsComponent implements OnInit {
     {
       this.products[indexValue].productComments = eventArg.productComments;
     }
-    console.log(this.selectedProduct.productComments);
+    console.log("Comments added to main cache.."   + JSON.stringify(this.selectedProduct));
   }
 
 }

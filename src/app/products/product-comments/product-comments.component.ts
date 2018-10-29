@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { IProduct } from '../interfaces/product';
+import { IProduct, IProductComments } from '../interfaces/product';
 
 @Component({
   selector: 'app-product-comments',
@@ -28,11 +28,17 @@ export class ProductCommentsComponent implements OnInit {
 
   }
   addCommentsClicked(): void {
+    let product : IProductComments = {
+      id : Math.random(),
+      dislikes : 0,
+      likes:0,
+      comment : this.textAreaValue
+    };
 
     if (this._selectedProduct.productComments)
-      this._selectedProduct.productComments.push(this.textAreaValue);
+      this._selectedProduct.productComments.push(product);
     else
-      this._selectedProduct.productComments = [this.textAreaValue];
+      this._selectedProduct.productComments = [product];
     this.commentAdd.emit(this._selectedProduct);
   }
 }
