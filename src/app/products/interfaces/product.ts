@@ -6,4 +6,5 @@ export interface IProduct {
   productRating: number;
   productImageURL: string;
   productDescription: string;
+  productComments: string[];
 }

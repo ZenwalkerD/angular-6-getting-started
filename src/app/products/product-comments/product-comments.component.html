@@ -1,18 +1,18 @@
-<ul class="list-group">
-  <div class="border border-dark" style="background-color: lightgrey; border-radius: 20px" *ngFor="let val of info">
+<ul class="list-group p-1">
+  <div class="border border-dark mt-2" style="background-color: lightgrey; border-radius: 20px" *ngFor="let val of _selectedProduct.productComments">
     <div class="row ml-2 mr-2 mt-1 mb-2">
-      <div class="col col-11">
+      <div class="col col-11 text-left" id="fixMaxHeight">
         {{val}}
       </div>
-      <a class="pr-1 btn btn-link text-info fa fa-lg fa-smile-o" style="max-width: 20px; max-height: 40px"></a>
-      <span class="pl-2 pr-2"></span>   
-      <a class="fa fa-lg fa-frown-o pl-3 btn btn-link text-danger" style="max-width: 20px; max-height: 40px"></a>
+      <div class="col-1 d-flex align-items-center">
+        <a class="fa fa-lg fa-smile-o text-primary pr-2" href="#" style="max-width: 20px; max-height: 20px"></a>
+        <a class="fa fa-lg fa-frown-o text-danger pl-2" href="#" style="max-width: 20px; max-height: 20px"></a>
+      </div>
     </div>
   </div>
-  <form class="ml-2">
-    <div class="form-row mt-3 mb-2">      
-      <textarea class="col-7 form-control" style="border-radius: 20px"></textarea>      
-      <button class="col-1 btn btn-primary btn-sm">Submit</button>
-    </div>
-  </form>
+  <div class="d-flex d-inline mt-2">
+    <textarea class=" col-9" rows="4" style="border-radius: 20px" placeholder="Enter your comments here.." [(ngModel)]="textAreaValue"></textarea>
+    <button class="col-2 ml-3 btn btn-primary align-self-center" (click)="addCommentsClicked()" [disabled]="!textAreaValue">Add
+      comments</button>
+  </div>
 </ul>

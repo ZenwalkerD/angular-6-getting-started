@@ -1,0 +1,6 @@
+#fixMaxHeight
+{
+    min-height: 40px;
+    max-height: 50px;
+    overflow-y: auto
+}

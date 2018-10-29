@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { IProduct } from '../interfaces/product';
 
 @Component({
   selector: 'app-product-comments',
@@ -9,20 +10,29 @@ export class ProductCommentsComponent implements OnInit {
 
   constructor() { }
 
+  textAreaValue: string;
+
   @Input()
-  set selectedProductId(value : string){
-    this._selectedProductId = value;
-  }
-  
-  private _selectedProductId : string;
-  ngOnInit() {
+  set selectedProduct(value: IProduct) {
+    if(value){
+    this._selectedProduct = value;
     
+    }
   }
 
-  info : string[] = [
-    "asdaddaaaaafwsfgegeghwrw,jbaefeiofhaeoiffsodfs;nbsdglksbsdbegfwkgbgpogbbgwbgowbwbowbhowfowhb;oiehgg;gisbgobggoiugoedghoirwgiorhgoiwrhgoiwhgfoiwgoiwgoiwrgiogoigobgogliusbgsbg;oshgswo;gwserg",
-    "wetrwrwrw",
-    "gerger",
-    "qeqwe"
-  ];
+  @Output()
+  commentAdd: EventEmitter<IProduct> = new EventEmitter<IProduct>();
+
+  private _selectedProduct: IProduct;
+  ngOnInit() {
+
+  }
+  addCommentsClicked(): void {
+
+    if (this._selectedProduct.productComments)
+      this._selectedProduct.productComments.push(this.textAreaValue);
+    else
+      this._selectedProduct.productComments = [this.textAreaValue];
+    this.commentAdd.emit(this._selectedProduct);
+  }
 }

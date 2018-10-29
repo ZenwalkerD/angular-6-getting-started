@@ -19,7 +19,7 @@
         </div>
     </div>
     <div *ngIf="selectedProduct">
-        <app-product-comments [selectedProductId]="selectedProduct.productCode">
+        <app-product-comments [selectedProduct]="selectedProduct" (commentAdd)="onCommentAdded($event)"> 
         </app-product-comments>
     </div>
 </div>

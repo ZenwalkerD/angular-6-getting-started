@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IProduct } from '../interfaces/product';
 import {ActivatedRoute} from '@angular/router';
 import { ProductDataService } from '../services/product-data.service';
+import { $ } from 'protractor';
 
 @Component({
   templateUrl: './products-description.component.html',
@@ -26,5 +27,13 @@ export class DetailsProductsComponent implements OnInit {
       error => this.errorMessage = <any> error);      
   }
   
+  onCommentAdded(eventArg : IProduct): void{
+    let indexValue = this.products.findIndex(item => item.productCode == eventArg.productCode);
+    if(indexValue > 0)
+    {
+      this.products[indexValue].productComments = eventArg.productComments;
+    }
+    console.log(this.selectedProduct.productComments);
+  }
 
 }
