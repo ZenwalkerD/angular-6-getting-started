@@ -4,3 +4,10 @@
     max-height: 50px;
     overflow-y: auto
 }
+
+.commentRating
+{
+    display: block; 
+    text-align: center; 
+    font-size: 10px;
+}

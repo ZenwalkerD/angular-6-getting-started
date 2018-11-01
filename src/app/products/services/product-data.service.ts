@@ -16,7 +16,7 @@ export class ProductDataService {
 
   getProductsData(): Observable<IProduct[]> {
     return this.httpClientService.get<IProduct[]>(this.productDataURL).pipe(
-      tap(error => console.log("Error occured: " + JSON.stringify(error))),
+      //tap(data => console.log("Get successful: " + JSON.stringify(data))),
       catchError(this.handleError));
   }
 
@@ -27,4 +27,15 @@ export class ProductDataService {
   }
 
   private productDataURL: string;
+
+  addProductComment(product : IProduct) : void
+  {
+    console.log("URL to PATCH..." + this.productDataURL + "/" + product.productCode.trim());
+
+    this.httpClientService.patch(this.productDataURL + "/" + product.productCode.trim(),
+    {
+      "productComments" : product.productComments
+    }).subscribe(data => console.log("Patch Request is succesfull.." + JSON.stringify(data)),
+    error => console.log("Error occured during PATCH req.." + error) );
+  }
 }

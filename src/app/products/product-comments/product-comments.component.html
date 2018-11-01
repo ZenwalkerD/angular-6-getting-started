@@ -1,12 +1,16 @@
 <ul class="list-group p-1">
-  <div class="border border-dark mt-2" style="background-color: lightgrey; border-radius: 20px" *ngFor="let val of _selectedProduct.productComments">
+  <div class="border border-dark mt-2" style="background-color: lightgrey; border-radius: 20px" *ngFor="let commentItem of _selectedProduct.productComments">
     <div class="row ml-2 mr-2 mt-1 mb-2">
       <div class="col col-11 text-left" id="fixMaxHeight">
-        {{val}}
+        {{commentItem.comment}}
       </div>
       <div class="col-1 d-flex align-items-center">
-        <a class="fa fa-lg fa-smile-o text-primary pr-2" href="#" style="max-width: 20px; max-height: 20px"></a>
-        <a class="fa fa-lg fa-frown-o text-danger pl-2" href="#" style="max-width: 20px; max-height: 20px"></a>
+        <a class="fa fa-lg fa-smile-o text-primary pr-2" href="#" style="max-width: 20px; max-height: 20px">
+          <div class="commentRating">{{commentItem.likes}}</div>
+        </a>
+        <a class="fa fa-lg fa-frown-o text-danger pl-2" href="#" style="max-width: 20px; max-height: 20px">
+          <div class="commentRating">{{commentItem.dislikes}}</div>
+        </a>
       </div>
     </div>
   </div>

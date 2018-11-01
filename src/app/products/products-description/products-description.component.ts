@@ -33,7 +33,6 @@ export class DetailsProductsComponent implements OnInit {
     {
       this.products[indexValue].productComments = eventArg.productComments;
     }
-    console.log("Comments added to main cache.."   + JSON.stringify(this.selectedProduct));
   }
 
 }

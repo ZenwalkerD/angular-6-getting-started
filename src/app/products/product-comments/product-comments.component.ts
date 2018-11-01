@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { IProduct, IProductComments } from '../interfaces/product';
+import { ProductDataService } from '../services/product-data.service';
 
 @Component({
   selector: 'app-product-comments',
@@ -8,7 +9,7 @@ import { IProduct, IProductComments } from '../interfaces/product';
 })
 export class ProductCommentsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private productDataService: ProductDataService) { }
 
   textAreaValue: string;
 
@@ -29,7 +30,7 @@ export class ProductCommentsComponent implements OnInit {
   }
   addCommentsClicked(): void {
     let product : IProductComments = {
-      id : Math.random(),
+      id : this._selectedProduct.productComments ? this._selectedProduct.productComments.length : 0,
       dislikes : 0,
       likes:0,
       comment : this.textAreaValue
@@ -39,6 +40,8 @@ export class ProductCommentsComponent implements OnInit {
       this._selectedProduct.productComments.push(product);
     else
       this._selectedProduct.productComments = [product];
-    this.commentAdd.emit(this._selectedProduct);
+    
+    this.commentAdd.emit(this._selectedProduct);//Update parent cache.
+    this.productDataService.addProductComment(this._selectedProduct);
   }
 }
