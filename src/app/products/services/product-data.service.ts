@@ -1,41 +1,32 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { IProduct } from '../interfaces/product';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http'
-import { Observable, throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http'
+import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductDataService {
+export class ProductDataService implements OnInit {
 
   constructor(private httpClientService: HttpClient) {
     this.productDataURL = environment.production ? "http://Server" : "http://localhost:3000/products";
+    this.productList = this.httpClientService.get<IProduct[]>(this.productDataURL);
+    this.productList.subscribe(item => this.products = item);
   }
 
-  getProductsData(): Observable<IProduct[]> {
-    return this.httpClientService.get<IProduct[]>(this.productDataURL).pipe(
-      //tap(data => console.log("Get successful: " + JSON.stringify(data))),
-      catchError(this.handleError));
+  ngOnInit() {
   }
-
-  private handleError(error: HttpErrorResponse) {
-    console.error(error);
-    return throwError(error);
-
-  }
+  products: IProduct[];
+  productList: Observable<IProduct[]>;
 
   private productDataURL: string;
 
-  addProductComment(product : IProduct) : void
-  {
-    console.log("URL to PATCH..." + this.productDataURL + "/" + product.productCode.trim());
-
+  addProductComment(product: IProduct): void {
     this.httpClientService.patch(this.productDataURL + "/" + product.productCode.trim(),
-    {
-      "productComments" : product.productComments
-    }).subscribe(data => console.log("Patch Request is succesfull.." + JSON.stringify(data)),
-    error => console.log("Error occured during PATCH req.." + error) );
+      {
+        "productComments": product.productComments
+      }).subscribe(data => console.log("Patch Request is succesfull.." + JSON.stringify(data)),
+        error => console.log("Error occured during PATCH req.." + error));
   }
 }

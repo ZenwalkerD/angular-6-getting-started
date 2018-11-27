@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { IProduct } from '../interfaces/product';
 import {ActivatedRoute} from '@angular/router';
 import { ProductDataService } from '../services/product-data.service';
-import { $ } from 'protractor';
 
 @Component({
   templateUrl: './products-description.component.html',
@@ -20,13 +19,11 @@ export class DetailsProductsComponent implements OnInit {
 
   ngOnInit() {
     this.productId = this.activatedRoute.snapshot.paramMap.get('id');
-     this.productService.getProductsData().subscribe(item => {
-    this.products= item,
-      this.selectedProduct = this.products.find(x => this.productId === x.productCode)      
-    },  
-      error => this.errorMessage = <any> error);      
+     this.products = this.productService.products;
+
+     this.selectedProduct = this.products.find(x => this.productId === x.productCode);
   }
-  
+
   onCommentAdded(eventArg : IProduct): void{
     let indexValue = this.products.findIndex(item => item.productCode == eventArg.productCode);
     if(indexValue > 0)
