@@ -12,12 +12,11 @@ export class ProductDataService implements OnInit {
   constructor(private httpClientService: HttpClient) {
     this.productDataURL = environment.production ? "http://Server" : "http://localhost:3000/products";
     this.productList = this.httpClientService.get<IProduct[]>(this.productDataURL);
-    this.productList.subscribe(item => this.products = item);
   }
 
   ngOnInit() {
   }
-  products: IProduct[];
+  
   productList: Observable<IProduct[]>;
 
   private productDataURL: string;

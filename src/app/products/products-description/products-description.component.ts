@@ -9,7 +9,9 @@ import { ProductDataService } from '../services/product-data.service';
 })
 export class DetailsProductsComponent implements OnInit {
 
-  constructor(private activatedRoute: ActivatedRoute, private productService: ProductDataService) { }
+  constructor(private activatedRoute: ActivatedRoute, private productService: ProductDataService) { 
+    this.productId = this.activatedRoute.snapshot.paramMap.get('id');     
+  }
 
   products: IProduct[];
 
@@ -18,10 +20,10 @@ export class DetailsProductsComponent implements OnInit {
   selectedProduct : IProduct;
 
   ngOnInit() {
-    this.productId = this.activatedRoute.snapshot.paramMap.get('id');
-     this.products = this.productService.products;
-
-     this.selectedProduct = this.products.find(x => this.productId === x.productCode);
+    this.productService.productList.subscribe(item => 
+      {
+        this.selectedProduct = item.find(value => value.productCode == this.productId);
+      });    
   }
 
   onCommentAdded(eventArg : IProduct): void{

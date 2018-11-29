@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ProductDataService } from '../../services/product-data.service';
+import { IProduct } from '../../interfaces/product';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root'/*  */
 })
 export class ValidProductIdGuard implements CanActivate {
 
@@ -13,12 +14,15 @@ export class ValidProductIdGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
     let id = next.url[1].path;
-    let foundProductCode = this.productDataService.products.findIndex(item => item.productCode === id);
-    if (foundProductCode < 0)
-      {
-        this.router.navigate(['/error']);
-        return false;
-      }
+    let foundProductCode: IProduct;
+    this.productDataService.productList.subscribe(item => {
+      foundProductCode = item.find(val => val.productCode === id)
+    });
+
+    if (!!foundProductCode) {
+      this.router.navigate(['/error']);
+      return false;
+    }
 
     return true;
   }

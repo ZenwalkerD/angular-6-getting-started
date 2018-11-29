@@ -12,13 +12,13 @@ export class ProductListComponent implements OnInit {
   _filterString: string = "";
 
   constructor(private productDataService: ProductDataService) {
-    this._filterString = "";
-    this.productList = productDataService.productList;
+    this._filterString = "";    
+    this.productDataService.productList.subscribe(item => this.filteredProducts = this.masterProductList = item);
   }
 
   filterProductList(): IProduct[] {
     var filterBy = this._filterString.toLocaleLowerCase();
-    return this.productDataService.products.filter(
+    return this.masterProductList.filter(
       (item: IProduct) =>
         item.productName.toLocaleLowerCase().indexOf(filterBy) !== -1);
   }
@@ -36,13 +36,14 @@ export class ProductListComponent implements OnInit {
     console.log(`Rating click recieved with ${eventArg}`);
   }
 
-  private productList: Observable<IProduct[]>;
+  private masterProductList: IProduct[];
 
   set filterString(v: string) {
     this._filterString = v;
 
-    if (!this._filterString)
+    if (this._filterString)
       this.filteredProducts = this.filterProductList();
+      else this.filteredProducts = this.masterProductList;
   }
 
   toggleProductImage(): void {
