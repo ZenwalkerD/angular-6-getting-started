@@ -4,9 +4,9 @@
     </div>
     <div class="class-body">
         <div class="container pt-2">
-            <div class="row" *ngIf="selectedProduct">
+            <div class="row" *ngIf="productService.productList | async">
                 <div class="col-2">
-                    <img [src]="'https://openclipart.org/download/'+ selectedProduct.productImageURL" [title]='selectedProduct.productName' />
+                    <img style="max-width: 200px" [src]="'https://openclipart.org/download/'+ selectedProduct.productImageURL" [title]='selectedProduct.productName' />
                 </div>
                 <div class="col-10 text-justify text-wrap">
                     {{selectedProduct.productDescription}}

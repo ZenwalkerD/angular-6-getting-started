@@ -12,12 +12,14 @@ import { AppComponent } from './app.component';
 import { DetailsProductsComponent } from './products/products-description/products-description.component';
 import { TruncateHypenPipe } from './shared/pipes/truncate-hypen.pipe';
 import { ProductCommentsComponent } from './products/product-comments/product-comments.component';
+import { ValidProductIdGuard } from './products/product-list/guards/valid-product-id.guard';
 
 const route: Routes = [
   { path: 'welcome', component: WelcomeComponent },
   { path: 'products', component: ProductListComponent },
-  { path: 'products/:id', component: DetailsProductsComponent },
+  { path: 'products/:id', component: DetailsProductsComponent, canActivate: [ValidProductIdGuard] },
   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
+  { path: 'error', component: PageNotFoundComponent },
   { path: '**', component: PageNotFoundComponent }
 ]
 
@@ -27,10 +29,10 @@ const route: Routes = [
     WelcomeComponent,
     ProductListComponent,
     ConvertToSpacesPipe,
-    StarComponent, 
-    PageNotFoundComponent, 
-    DetailsProductsComponent, 
-    DetailsProductsComponent, 
+    StarComponent,
+    PageNotFoundComponent,
+    DetailsProductsComponent,
+    DetailsProductsComponent,
     TruncateHypenPipe, ProductCommentsComponent
   ],
   imports: [
