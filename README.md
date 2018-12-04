@@ -25,3 +25,24 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Json-server dependency
+
+Before running the `ng serve` command, make sure you also run `npm run json-server`
+
+## Features supported
+
+* Basic tabular display of Product list
+* Routing and Route guards implemented
+* Async pipes used in markup for asyncronous data fetching and display
+* Comments addition added to each product and saved into the DB
+* HTTPClient service for fetching/saving Data to DB.
+* Minor refactoring and code restructuring.
+
+## TODO
+* Proper modular restructuring
+* Module routing with child routing mechanism to be added
+* Angular Forms implementation
+* Angular Animations to be added if need be.
+>> Forking this repo to implement TODOs. Check out https://github.com/ZenwalkerD/Angular-6-Intermediate.git
+
