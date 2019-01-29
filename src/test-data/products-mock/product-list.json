@@ -49,6 +49,15 @@
       "productRating": 4.5,
       "productDescription": "Oak tree based beautifully crafted cutting board for your beautiful kitchen. Coated with harmfree chemicals to give long lasting durability and no surface damage entering your food. Washable with hot/cold water.",
       "productImageURL": "293104/cutting-board.svg"
+    },
+    {
+      "productName": "Saw blade",
+      "productCode": "6",
+      "productAvailable": true,
+      "productPrice": 500,
+      "productRating": 5,
+      "productDescription": "Diablo's Ultra Finish Blades offer the quality that fine cabinetmakers expect with the capability to handle the extreme conditions of professional construction. Diablo's blade produces a remarkably clean, chip-free cut that requires little to no sanding. Ideal for crosscutting oak, pine, melamine, veneer plywood and delicate molding.",
+      "productImageURL": "242427/160226_saw_blade.svg"
     }
   ]
 }

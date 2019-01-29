@@ -19,12 +19,14 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { CustomChartLegendComponent } from './shared/custom-chart-legend/custom-chart-legend.component';
 import {MatChipsModule} from '@angular/material/chips'; 
 
+import { ValidProductIdGuard } from './products/product-list/guards/valid-product-id.guard';
 
 const route: Routes = [
   { path: 'welcome', component: WelcomeComponent },
   { path: 'products', component: ProductListComponent },
-  { path: 'products/:id', component: DetailsProductsComponent },
+  { path: 'products/:id', component: DetailsProductsComponent, canActivate: [ValidProductIdGuard] },
   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
+  { path: 'error', component: PageNotFoundComponent },
   { path: '**', component: PageNotFoundComponent }
 ]
 
