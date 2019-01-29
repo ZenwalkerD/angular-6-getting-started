@@ -12,6 +12,13 @@ import { AppComponent } from './app.component';
 import { DetailsProductsComponent } from './products/products-description/products-description.component';
 import { TruncateHypenPipe } from './shared/pipes/truncate-hypen.pipe';
 import { ProductCommentsComponent } from './products/product-comments/product-comments.component';
+import { ChartComponent } from './Graphical/chart/chart.component';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { CustomChartLegendComponent } from './shared/custom-chart-legend/custom-chart-legend.component';
+import {MatChipsModule} from '@angular/material/chips'; 
+
 
 const route: Routes = [
   { path: 'welcome', component: WelcomeComponent },
@@ -31,13 +38,17 @@ const route: Routes = [
     PageNotFoundComponent, 
     DetailsProductsComponent, 
     DetailsProductsComponent, 
-    TruncateHypenPipe, ProductCommentsComponent
+    TruncateHypenPipe, ProductCommentsComponent, ChartComponent, CustomChartLegendComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(route)
+    ChartsModule,
+    RouterModule.forRoot(route),
+    BrowserAnimationsModule,
+    MatGridListModule,
+    MatChipsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,8 @@
+<mat-grid-list cols="2" rowHeight="2:1">    
+    <custom-chart-legend *ngIf= "this.chartBackGroundColor && this.pieChartLabels" [legendColor]="this.chartBackGroundColor" [legendLabels]="this.pieChartLabels"></custom-chart-legend>
+  <mat-grid-tile *ngFor="let tile of tiles" [style.background]="">      
+    <canvas baseChart [data]=tile.data chart-labels="false" [labels]="pieChartLabels" [chartType]="pieChartType" [options]="pieChartOptions"
+      (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+    </canvas>
+  </mat-grid-tile>
+</mat-grid-list>
